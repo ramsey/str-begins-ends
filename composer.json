@@ -1,0 +1,78 @@
+{
+    "name": "ramsey/str-begins-ends",
+    "description": "Provides functions to test whether a string begins or ends with a certain substring.",
+    "type": "library",
+    "keywords": [
+        "mb_str_begins",
+        "mb_str_ends",
+        "mb_str_ibegins",
+        "mb_str_iends",
+        "polyfill",
+        "str_begins",
+        "str_ends",
+        "str_ibegins",
+        "str_iends",
+        "strings"
+    ],
+    "homepage": "https://github.com/ramsey/str-begins-ends",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Ramsey",
+            "email": "ben@benramsey.com",
+            "homepage": "https://benramsey.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ramsey/str-begins-ends/issues",
+        "rss": "https://github.com/ramsey/str-begins-ends/releases.atom",
+        "source": "https://github.com/ramsey/str-begins-ends.git"
+    },
+    "require": {
+        "php": "^5.4 || ^7.0"
+    },
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "^1",
+        "mockery/mockery": "^0.9.11",
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "^3"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php",
+            "src/mb_str_begins.php",
+            "src/mb_str_ends.php",
+            "src/mb_str_ibegins.php",
+            "src/mb_str_iends.php",
+            "src/str_begins.php",
+            "src/str_ends.php",
+            "src/str_ibegins.php",
+            "src/str_iends.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ramsey\\String\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "lint": "parallel-lint src tests",
+        "phpcs": "phpcs src tests --standard=psr12 -sp --colors",
+        "phpunit": "phpunit --verbose --colors=always",
+        "phpunit-ci": "phpunit --verbose --coverage-clover build/logs/clover.xml",
+        "phpunit-coverage": "phpunit --verbose --colors=always --coverage-html build/coverage",
+        "test": [
+            "@lint",
+            "@phpcs",
+            "@phpunit"
+        ],
+        "test-ci": [
+            "@lint",
+            "@phpcs",
+            "@phpunit-ci"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
