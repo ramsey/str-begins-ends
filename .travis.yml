@@ -31,4 +31,4 @@ script:
   - composer run test-ci
 
 after_success:
-  - ./bin/coveralls.sh
+  - travis_retry ./bin/coveralls.sh
