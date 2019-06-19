@@ -10,6 +10,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+
+## [1.0.0] - 2019-06-19
+
+### Added
+
 Polyfill for functions based on Will Hudgins's PHP RFC "[Add str begin and end
 functions][rfc]."
 
@@ -21,27 +36,6 @@ functions][rfc]."
 * `str_ends()`
 * `str_ibegins()`
 * `str_iends()`
-
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
-
-<!--
-## [1.0.0] - YYYY-MM-DD
-
-### Added
-
-* Feature A description
-* Feature B description
-* Feature C description
--->
 
 
 [rfc]: https://wiki.php.net/rfc/add_str_begin_and_end_functions
