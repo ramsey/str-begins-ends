@@ -29,7 +29,7 @@
         "source": "https://github.com/ramsey/str-begins-ends.git"
     },
     "require": {
-        "php": "^5.4 || ^7.0"
+        "php": "^5.4 || ^7.0 || ^8.0"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "^1",
