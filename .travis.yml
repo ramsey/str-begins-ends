@@ -8,10 +8,12 @@ php:
   - 7.1
   - 7.2
   - 7.3
-  - nightly
 
 matrix:
   fast_finish: true
+  include:
+    - php: nightly
+      env: COMPOSER_OPTS="--ignore-platform-reqs"
   allow_failures:
     - php: nightly
 
@@ -21,8 +23,8 @@ before_install:
   - travis_retry composer self-update
 
 install:
-  - travis_retry composer require --no-update php-coveralls/php-coveralls:"^1.1 || ^2.0"
-  - travis_retry composer install --no-interaction --prefer-dist --no-progress --no-suggest
+  - travis_retry composer require $COMPOSER_OPTS --no-update php-coveralls/php-coveralls:"^1.1 || ^2.0"
+  - travis_retry composer install $COMPOSER_OPTS --no-interaction --prefer-dist --no-progress --no-suggest
 
 before_script:
   - mkdir -p build/logs
