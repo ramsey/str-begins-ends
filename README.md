@@ -38,7 +38,7 @@ implement the [RFC][] in a future version.
 ## str_begins
 
 ``` php
-str_begins(string $haystack , string $needle)
+str_begins(string $haystack , string $needle): bool
 ```
 
 Performs a *case-sensitive* check to determine whether `$haystack` begins with
@@ -59,7 +59,7 @@ if (str_begins($url, 'http://')) {
 ## str_ends
 
 ``` php
-str_ends(string $haystack , string $needle)
+str_ends(string $haystack , string $needle): bool
 ```
 
 Performs a *case-sensitive* check to determine whether `$haystack` ends with
@@ -80,7 +80,7 @@ if (str_ends($file, '.log')) {
 ## str_ibegins
 
 ``` php
-str_ibegins(string $haystack , string $needle)
+str_ibegins(string $haystack , string $needle): bool
 ```
 
 Performs a *case-insensitive* check to determine whether `$haystack` begins with
@@ -101,7 +101,7 @@ if (str_ibegins($url, 'https://')) {
 ## str_iends
 
 ``` php
-str_iends(string $haystack , string $needle)
+str_iends(string $haystack , string $needle): bool
 ```
 
 Performs a *case-insensitive* check to determine whether `$haystack` ends with
@@ -145,7 +145,7 @@ if (mb_str_begins($runePoem, 'ᚠᛇᚻ')) {
 ## mb_str_ends
 
 ``` php
-mb_str_ends(string $haystack , string $needle [, string $encoding = mb_internal_encoding()])
+mb_str_ends(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
 ```
 
 Performs a *case-sensitive*, multi-byte safe `str_ends()` operation to check
@@ -168,7 +168,7 @@ if (mb_str_ends($sanskrit, 'माम् ॥')) {
 ## mb_str_ibegins
 
 ``` php
-mb_str_ibegins(string $haystack , string $needle [, string $encoding = mb_internal_encoding()])
+mb_str_ibegins(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
 ```
 
 Performs a *case-insensitive*, multi-byte safe `str_ibegins()` operation to check
@@ -191,7 +191,7 @@ if (mb_str_ibegins($poem, 'ΤῊ')) {
 ## mb_str_iends
 
 ``` php
-mb_str_iends(string $haystack , string $needle [, string $encoding = mb_internal_encoding()])
+mb_str_iends(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
 ```
 
 Performs a *case-insensitive*, multi-byte safe `str_iends()` operation to check
