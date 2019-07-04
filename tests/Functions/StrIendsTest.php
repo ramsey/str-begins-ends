@@ -1,8 +1,9 @@
 <?php
 
-namespace Ramsey\String\Test;
+namespace Ramsey\String\Test\Functions;
 
 use PHPUnit_Framework_Error;
+use Ramsey\String\Test\TestCase;
 
 class StrIendsTest extends TestCase
 {
@@ -33,6 +34,35 @@ class StrIendsTest extends TestCase
     public function testStrIends($haystack, $needle, $expected)
     {
         $this->assertSame($expected, str_iends($haystack, $needle));
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     * @expectedExceptionMessage str_ends_with_ci() expects parameter 1 to be string, object given
+     */
+    public function testStrEndsWithCiTriggersWarningForInvalidHaystack()
+    {
+        str_ends_with_ci(new \stdClass(), 'foo');
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     * @expectedExceptionMessage str_ends_with_ci() expects parameter 2 to be string, object given
+     */
+    public function testStrEndsWithCiTriggersWarningForInvalidNeedle()
+    {
+        str_ends_with_ci('foo', new \stdClass());
+    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param $expected
+     * @dataProvider strIendsProvider
+     */
+    public function testStrEndsWithCi($haystack, $needle, $expected)
+    {
+        $this->assertSame($expected, str_ends_with_ci($haystack, $needle));
     }
 
     public function strIendsProvider()

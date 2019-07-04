@@ -1,8 +1,9 @@
 <?php
 
-namespace Ramsey\String\Test;
+namespace Ramsey\String\Test\Functions;
 
 use PHPUnit_Framework_Error;
+use Ramsey\String\Test\TestCase;
 
 class MbStrEndsTest extends TestCase
 {
@@ -44,6 +45,39 @@ class MbStrEndsTest extends TestCase
         mb_internal_encoding($mainEncoding);
 
         $this->assertSame($expected, mb_str_ends($haystack, $needle, $encodingParameter));
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     * @expectedExceptionMessage mb_str_ends_with() expects parameter 1 to be string, object given
+     */
+    public function testMbStrEndsWithTriggersWarningForInvalidHaystack()
+    {
+        mb_str_ends_with(new \stdClass(), 'foo');
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     * @expectedExceptionMessage mb_str_ends_with() expects parameter 2 to be string, object given
+     */
+    public function testMbStrEndsWithTriggersWarningForInvalidNeedle()
+    {
+        mb_str_ends_with('foo', new \stdClass());
+    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param $expected
+     * @param $mainEncoding
+     * @param $encodingParameter
+     * @dataProvider mbStrEndsProvider
+     */
+    public function testMbStrEndsWith($haystack, $needle, $expected, $mainEncoding, $encodingParameter)
+    {
+        mb_internal_encoding($mainEncoding);
+
+        $this->assertSame($expected, mb_str_ends_with($haystack, $needle, $encodingParameter));
     }
 
     public function mbStrEndsProvider()

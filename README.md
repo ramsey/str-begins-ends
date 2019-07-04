@@ -35,10 +35,10 @@ cause conflicts in any project using it, should PHP decide to adopt and
 implement the [RFC][] in a future version.
 
 
-## str_begins
+## str_starts_with
 
 ``` php
-str_begins(string $haystack , string $needle): bool
+str_starts_with(string $haystack , string $needle): bool
 ```
 
 Performs a *case-sensitive* check to determine whether `$haystack` begins with
@@ -50,16 +50,16 @@ Performs a *case-sensitive* check to determine whether `$haystack` begins with
 ``` php
 $url = 'http://example.com';
 
-if (str_begins($url, 'http://')) {
+if (str_starts_with($url, 'http://')) {
     $url = str_replace('http://', 'https://', $url);
 }
 ```
 
 
-## str_ends
+## str_ends_with
 
 ``` php
-str_ends(string $haystack , string $needle): bool
+str_ends_with(string $haystack , string $needle): bool
 ```
 
 Performs a *case-sensitive* check to determine whether `$haystack` ends with
@@ -71,16 +71,16 @@ Performs a *case-sensitive* check to determine whether `$haystack` ends with
 ``` php
 $file = '/path/to/something.log';
 
-if (str_ends($file, '.log')) {
+if (str_ends_with($file, '.log')) {
     $contents = file_get_contents($file);
 }
 ```
 
 
-## str_ibegins
+## str_begins_with_ci
 
 ``` php
-str_ibegins(string $haystack , string $needle): bool
+str_begins_with_ci(string $haystack , string $needle): bool
 ```
 
 Performs a *case-insensitive* check to determine whether `$haystack` begins with
@@ -92,16 +92,16 @@ Performs a *case-insensitive* check to determine whether `$haystack` begins with
 ``` php
 $url = 'HTTPS://example.com';
 
-if (str_ibegins($url, 'https://')) {
+if (str_begins_with_ci($url, 'https://')) {
     $url = substr($url, 8);
 }
 ```
 
 
-## str_iends
+## str_ends_with_ci
 
 ``` php
-str_iends(string $haystack , string $needle): bool
+str_ends_with_ci(string $haystack , string $needle): bool
 ```
 
 Performs a *case-insensitive* check to determine whether `$haystack` ends with
@@ -113,19 +113,19 @@ Performs a *case-insensitive* check to determine whether `$haystack` ends with
 ``` php
 $file = '/path/to/something.TXT';
 
-if (str_iends($file, '.txt')) {
+if (str_ends_with_ci($file, '.txt')) {
     $contents = file_get_contents($file);
 }
 ```
 
 
-## mb_str_begins
+## mb_str_starts_with
 
 ``` php
-mb_str_begins(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
+mb_str_starts_with(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
 ```
 
-Performs a *case-sensitive*, multi-byte safe `str_begins()` operation to check
+Performs a *case-sensitive*, multi-byte safe `str_starts_with()` operation to check
 whether `$haystack` begins with `$needle`.
 
 > This function is only available if the [mbstring extension][] is installed.
@@ -136,19 +136,19 @@ whether `$haystack` begins with `$needle`.
 ``` php
 $runePoem = 'ᚠᛇᚻ᛫ᛒᛦᚦ᛫ᚠᚱᚩᚠᚢᚱ᛫ᚠᛁᚱᚪ᛫ᚷᛖᚻᚹᛦᛚᚳᚢᛗ';
 
-if (mb_str_begins($runePoem, 'ᚠᛇᚻ')) {
+if (mb_str_starts_with($runePoem, 'ᚠᛇᚻ')) {
     $poem = 'Wealth is a comfort to all men';
 }
 ```
 
 
-## mb_str_ends
+## mb_str_ends_with
 
 ``` php
-mb_str_ends(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
+mb_str_ends_with(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
 ```
 
-Performs a *case-sensitive*, multi-byte safe `str_ends()` operation to check
+Performs a *case-sensitive*, multi-byte safe `str_ends_with()` operation to check
 whether `$haystack` ends with `$needle`.
 
 > This function is only available if the [mbstring extension][] is installed.
@@ -159,19 +159,19 @@ whether `$haystack` ends with `$needle`.
 ``` php
 $sanskrit = 'काचं शक्नोम्यत्तुम् । नोपहिनस्ति माम् ॥';
 
-if (mb_str_ends($sanskrit, 'माम् ॥')) {
+if (mb_str_ends_with($sanskrit, 'माम् ॥')) {
     $translation = 'I can eat glass';
 }
 ```
 
 
-## mb_str_ibegins
+## mb_str_begins_with_ci
 
 ``` php
-mb_str_ibegins(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
+mb_str_begins_with_ci(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
 ```
 
-Performs a *case-insensitive*, multi-byte safe `str_ibegins()` operation to check
+Performs a *case-insensitive*, multi-byte safe `str_begins_with_ci()` operation to check
 whether `$haystack` begins with `$needle`.
 
 > This function is only available if the [mbstring extension][] is installed.
@@ -182,19 +182,19 @@ whether `$haystack` begins with `$needle`.
 ``` php
 $poem = 'Τὴ γλῶσσα μοῦ ἔδωσαν ἑλληνικὴ';
 
-if (mb_str_ibegins($poem, 'ΤῊ')) {
+if (mb_str_begins_with_ci($poem, 'ΤῊ')) {
     $poet = 'Οδυσσέας Ελύτης';
 }
 ```
 
 
-## mb_str_iends
+## mb_str_ends_with_ci
 
 ``` php
-mb_str_iends(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
+mb_str_ends_with_ci(string $haystack , string $needle [, string $encoding = mb_internal_encoding()]): bool
 ```
 
-Performs a *case-insensitive*, multi-byte safe `str_iends()` operation to check
+Performs a *case-insensitive*, multi-byte safe `str_ends_with_ci()` operation to check
 whether `$haystack` ends with `$needle`.
 
 > This function is only available if the [mbstring extension][] is installed.
@@ -205,7 +205,7 @@ whether `$haystack` ends with `$needle`.
 ``` php
 $poem = 'Τὴ γλῶσσα μοῦ ἔδωσαν ἑλληνικὴ';
 
-if (mb_str_iends($poem, 'ἙΛΛΗΝΙΚῊ')) {
+if (mb_str_ends_with_ci($poem, 'ἙΛΛΗΝΙΚῊ')) {
     $poet = 'Οδυσσέας Ελύτης';
 }
 ```

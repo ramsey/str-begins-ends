@@ -9,7 +9,7 @@
  * @license http://opensource.org/licenses/MIT MIT
  */
 
-if (extension_loaded('mbstring') && !function_exists('mb_str_ends')) {
+if (extension_loaded('mbstring') && !function_exists('mb_str_ends_with')) {
     /**
      * Checks if haystack ends with needle
      *
@@ -18,25 +18,40 @@ if (extension_loaded('mbstring') && !function_exists('mb_str_ends')) {
      * @param string|null $encoding
      * @return bool
      */
+    function mb_str_ends_with($haystack, $needle, $encoding = null)
+    {
+        try {
+            return (new \Ramsey\String\MbStringValue($haystack, $encoding))->endsWith($needle);
+        } catch (\Ramsey\String\InvalidStringArgumentException $e) {
+            \Ramsey\String\emitWarning(__FUNCTION__, $e);
+        }
+
+        // @codeCoverageIgnoreStart
+    }
+
+    // @codeCoverageIgnoreEnd
+}
+
+if (extension_loaded('mbstring') && !function_exists('mb_str_ends')) {
+    /**
+     * Checks if haystack ends with needle
+     *
+     * @param string $haystack
+     * @param string $needle
+     * @param string|null $encoding
+     * @return bool
+     * @deprecated
+     */
     function mb_str_ends($haystack, $needle, $encoding = null)
     {
-        $validHaystack = \Ramsey\String\testString($haystack, 1, __FUNCTION__);
-        $validNeedle = \Ramsey\String\testString($needle, 2, __FUNCTION__);
-
-        if (null === $encoding) {
-            $encoding = mb_internal_encoding();
+        try {
+            return (new \Ramsey\String\MbStringValue($haystack, $encoding))->endsWith($needle);
+        } catch (\Ramsey\String\InvalidStringArgumentException $e) {
+            \Ramsey\String\emitWarning(__FUNCTION__, $e);
         }
 
-        if (0 === mb_strlen($validNeedle, $encoding)) {
-            return true;
-        }
-
-        $haystackEnd = mb_substr($validHaystack, mb_strlen($validNeedle, $encoding) * -1, null, $encoding);
-
-        if (0 === mb_strpos($haystackEnd, $validNeedle, 0, $encoding)) {
-            return true;
-        }
-
-        return false;
+        // @codeCoverageIgnoreStart
     }
+
+    // @codeCoverageIgnoreEnd
 }

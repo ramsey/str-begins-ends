@@ -9,7 +9,7 @@
  * @license http://opensource.org/licenses/MIT MIT
  */
 
-if (!function_exists('str_ends')) {
+if (!function_exists('str_ends_with')) {
     /**
      * Checks if haystack ends with needle
      *
@@ -17,21 +17,39 @@ if (!function_exists('str_ends')) {
      * @param string $needle
      * @return bool
      */
+    function str_ends_with($haystack, $needle)
+    {
+        try {
+            return (new \Ramsey\String\StringValue($haystack))->endsWith($needle);
+        } catch (\Ramsey\String\InvalidStringArgumentException $e) {
+            \Ramsey\String\emitWarning(__FUNCTION__, $e);
+        }
+
+        // @codeCoverageIgnoreStart
+    }
+
+    // @codeCoverageIgnoreEnd
+}
+
+if (!function_exists('str_ends')) {
+    /**
+     * Checks if haystack ends with needle
+     *
+     * @param string $haystack
+     * @param string $needle
+     * @return bool
+     * @deprecated
+     */
     function str_ends($haystack, $needle)
     {
-        $validHaystack = \Ramsey\String\testString($haystack, 1, __FUNCTION__);
-        $validNeedle = \Ramsey\String\testString($needle, 2, __FUNCTION__);
-
-        if (0 === strlen($validNeedle)) {
-            return true;
+        try {
+            return (new \Ramsey\String\StringValue($haystack))->endsWith($needle);
+        } catch (\Ramsey\String\InvalidStringArgumentException $e) {
+            \Ramsey\String\emitWarning(__FUNCTION__, $e);
         }
 
-        $haystackEnd = substr($validHaystack, strlen($validNeedle) * -1);
-
-        if (0 === strpos($haystackEnd, $validNeedle)) {
-            return true;
-        }
-
-        return false;
+        // @codeCoverageIgnoreStart
     }
+
+    // @codeCoverageIgnoreEnd
 }
