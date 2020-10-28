@@ -38,6 +38,7 @@
         "phpunit/phpunit": "^4.8 || ^5",
         "squizlabs/php_codesniffer": "^3"
     },
+    "abandoned": "symfony/polyfill-php80",
     "suggest": {
         "ext-mbstring": "Needed to support the mb_str_* functions provided."
     },
